@@ -10,6 +10,7 @@ import android.media.Image;
 import android.util.Size;
 
 import ai.fritz.core.Fritz;
+import ai.fritz.core.FritzOnDeviceModel;
 import ai.fritz.fritzvisionhairsegmentationmodel.HairSegmentationOnDeviceModel;
 import ai.fritz.vision.FritzVision;
 import ai.fritz.vision.FritzVisionImage;
@@ -20,6 +21,8 @@ import ai.fritz.vision.imagesegmentation.FritzVisionSegmentResult;
 import ai.fritz.vision.imagesegmentation.FritzVisionSegmentTFLPredictor;
 import ai.fritz.vision.imagesegmentation.MaskType;
 import ai.fritz.vision.imagesegmentation.SegmentOnDeviceModel;
+
+import com.Qian.HairDye.Train_170CustomModel;
 
 
 public class MainActivity extends LiveCameraActivity {
@@ -43,7 +46,8 @@ public class MainActivity extends LiveCameraActivity {
         // A FritzOnDeviceModel object is available when a model has been
         // successfully downloaded and included with the app.
         // TODO: Create a predictor
-        SegmentOnDeviceModel onDeviceModel = new HairSegmentationOnDeviceModel();
+        // SegmentOnDeviceModel onDeviceModel = new HairSegmentationOnDeviceModel();
+        SegmentOnDeviceModel onDeviceModel = new Train_170CustomModel();
         predictor = FritzVision.ImageSegmentation.getPredictorTFL(onDeviceModel);
         MaskType.HAIR.color = Color.RED;
         // ----------------------------------------------
@@ -57,6 +61,7 @@ public class MainActivity extends LiveCameraActivity {
         // TODO: Add code for creating FritzVisionImage from a media.Image object
         int rotation = FritzVisionOrientation.getImageRotationFromCamera(this, cameraId);
         visionImage = FritzVisionImage.fromMediaImage(image, rotation);
+        System.out.println(visionImage.getRotatedBitmapDimensions().toString());
         // ------------------------------------------------------------------------
         // END STEP 2
     }
