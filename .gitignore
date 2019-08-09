@@ -14,7 +14,7 @@ gen/
 out/
 
 # setting files
-.setting
+.settings/
 
 # Gradle files
 .gradle/
