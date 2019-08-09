@@ -13,6 +13,9 @@ bin/
 gen/
 out/
 
+# setting files
+.setting
+
 # Gradle files
 .gradle/
 build/
