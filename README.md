@@ -1,4 +1,6 @@
-# Hair Dye Android![](./images/hairicon.png)
+# Hair Dye Android   
+
+![hairicon](./images/hairicon.png)
 
 This android app is based on the [Fritz tutorial](<https://github.com/fritzlabs/fritz-android-tutorials/tree/master/HairColoringApp>). I changed the model to our own model. Currently, the hair can be colored to RED.
 
