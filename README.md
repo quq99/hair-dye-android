@@ -6,7 +6,7 @@ This android app is based on the [Fritz tutorial](<https://github.com/fritzlabs/
 
 For model **training** part, refer to our [repo](<https://github.com/aobo-y/hair-dye>).
 
-
+The network model was proposed by [Alex L. Cheng C, etc. 'Real-time deep hair matting on mobile devices'](https://arxiv.org/pdf/1712.07168.pdf)
 
 ## ML model
 
