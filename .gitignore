@@ -13,6 +13,9 @@ bin/
 gen/
 out/
 
+# DS store
+.DS_Store
+
 # setting files
 .settings/
 
