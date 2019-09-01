@@ -18,7 +18,7 @@ import ai.fritz.vision.FritzVisionOrientation;
 import ai.fritz.vision.imagesegmentation.BlendMode;
 import ai.fritz.vision.imagesegmentation.BlendModeType;
 import ai.fritz.vision.imagesegmentation.FritzVisionSegmentResult;
-import ai.fritz.vision.imagesegmentation.FritzVisionSegmentTFLPredictor;
+import ai.fritz.vision.imagesegmentation.FritzVisionSegmentPredictor;
 import ai.fritz.vision.imagesegmentation.MaskType;
 import ai.fritz.vision.imagesegmentation.SegmentOnDeviceModel;
 
@@ -29,7 +29,7 @@ public class MainActivity extends LiveCameraActivity {
 
     private static final String API_KEY = "4892125c17c843c6b06ebce6e77ea631";
 
-    private FritzVisionSegmentTFLPredictor predictor;
+    private FritzVisionSegmentPredictor predictor;
     private FritzVisionImage visionImage;
     private FritzVisionSegmentResult segmentResult;
 
@@ -48,8 +48,8 @@ public class MainActivity extends LiveCameraActivity {
         // TODO: Create a predictor
         // SegmentOnDeviceModel onDeviceModel = new HairSegmentationOnDeviceModel();
         SegmentOnDeviceModel onDeviceModel = new Train_170CustomModel();
-        predictor = FritzVision.ImageSegmentation.getPredictorTFL(onDeviceModel);
-        MaskType.HAIR.color = Color.RED;
+        predictor = FritzVision.ImageSegmentation.getPredictor(onDeviceModel);
+        MaskType.HAIR.color = Color.BLUE;
         // ----------------------------------------------
         // END STEP 1
     }
@@ -80,7 +80,7 @@ public class MainActivity extends LiveCameraActivity {
         // STEP 4: Draw the prediction result
         // ----------------------------------
         if(segmentResult != null && visionImage != null) {
-            BlendMode blendMode = BlendModeType.SOFT_LIGHT.create();
+            BlendMode blendMode = BlendModeType.HUE.create();
             Bitmap maskBitmap = segmentResult.createMaskOverlayBitmap(blendMode.getAlpha());
             Bitmap blendedBitmap = visionImage.blend(maskBitmap, blendMode);
             // Hacky but putting this here to mirror the result for selfies.
